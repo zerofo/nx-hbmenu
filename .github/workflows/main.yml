@@ -31,7 +31,7 @@ jobs:
         git config --global --add safe.directory `pwd`
         git submodule update --remote 
         make dist-bin -j $(nproc);
-        ls -la
+        ls *.zip|sed "s/v.*\-.*//" |xargs -I {} mv $(ls *.zip) {}.zip
     - name: Upload file
       uses: actions/upload-artifact@v4
       with:
