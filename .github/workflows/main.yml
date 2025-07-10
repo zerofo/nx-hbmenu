@@ -61,7 +61,7 @@ jobs:
         repo_token: ${{ secrets.release_token }}
         file: |
           ./output/hblmenu-NSP_010078787878100d.nsp
-          ./hbmenu.nsp
+          ./nx-hbmenu.nsp
         tag: ${{ github.ref }}
         overwrite: true
         file_glob: true
