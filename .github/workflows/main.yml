@@ -37,19 +37,21 @@ jobs:
         #tree .
         mkdir -p hblmenu_NSP/exefs
         mkdir -p hblmenu_NSP/control
-        cp nx-hbmenu.nso hblmenu_NSP/exefs/main
-        # cp nx-hbmenu.npdm hblmenu_NSP/exefs/main.npdm
-        npdmtool config.json hblmenu_NSP/exefs/main.npdm
+        cp nx-hbmenu.nro hblmenu_NSP/exefs/main
+        cp nx-hbmenu.npdm hblmenu_NSP/exefs/main.npdm
         convert icon.jpg -resize 256x256 icon_AmericanEnglish.jpg
         cp icon_AmericanEnglish.jpg hblmenu_NSP/control/
         cp -r romfs hblmenu_NSP/
-        nacptool --create "hblmenu" "zerofo" "v0.1" hblmenu_NSP/control/control.nacp --titleid 010078787878100D
+        #npdmtool config.json hblmenu_NSP/exefs/main.npdm
+        #nacptool --create "hblmenu" "zerofo" "v0.1" hblmenu_NSP/control/control.nacp --titleid 010078787878100D
+        cp nx-hbmenu.nacp hblmenu_NSP/control/control.nacp
         ################### packing NSP #####################
         # wget https://github.com/DeaconBlood/PROD.KEYS/releases/latest/download/prod.keys
         wget https://github.com/DeaconBlood/PROD.KEYS/releases/download/KEYS/prod.keys
         wget https://github.com/zerofo/hacBrewPack/releases/latest/download/hacbrewpack
         sudo -E chmod +x ./hacbrewpack
-        ./hacbrewpack -k prod.keys --exefsdir hblmenu_NSP/exefs/ --controldir hblmenu_NSP/control --titleid 010078787878100D --romfsdir hblmenu_NSP/romfs --nologo --nspdir output
+        ./hacbrewpack -k prod.keys --exefsdir hblmenu_NSP/exefs/ --controldir hblmenu_NSP/control --titleid 010078787878100D \
+          --romfsdir hblmenu_NSP/romfs --nologo --plaintext --nosignncasig2 --nopatchnacplog --nspdir output
          mv ./output/010078787878100d.nsp ./hblmenu-NSP_010078787878100d.nsp
     - name: Upload file
       uses: actions/upload-artifact@v4
