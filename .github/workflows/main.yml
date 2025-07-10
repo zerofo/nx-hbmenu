@@ -38,6 +38,7 @@ jobs:
         mkdir -p hblmenu_NSP/exefs
         mkdir -p hblmenu_NSP/control
         cp nx-hbmenu.elf hblmenu_NSP/exefs/main
+        cp nx-hbmenu.npdm hblmenu_NSP/exefs/main.npdm
         # npdmtool hbl.json hblmenu_NSP/exefs/main.npdm
         convert icon.jpg -resize 256x256 icon_AmericanEnglish.jpg
         cp icon_AmericanEnglish.jpg hblmenu_NSP/control/
