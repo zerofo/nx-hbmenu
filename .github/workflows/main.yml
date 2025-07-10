@@ -42,8 +42,9 @@ jobs:
         cp icon_AmericanEnglish.jpg hblmenu_NSP/control/
         cp -r romfs hblmenu_NSP/
         #npdmtool config.json hblmenu_NSP/exefs/main.npdm
-        #nacptool --create "hblmenu" "zerofo" "v0.1" hblmenu_NSP/control/control.nacp --titleid 010078787878100D
-        cp nx-hbmenu.nacp hblmenu_NSP/control/control.nacp
+        nacptool --create "hblmenu" "zerofo" "v0.1" hblmenu_NSP/control/control.nacp --titleid 010078787878100D
+        # cp nx-hbmenu.nacp hblmenu_NSP/control/control.nacp
+        ls
         ################### packing NSP #####################
         # wget https://github.com/DeaconBlood/PROD.KEYS/releases/latest/download/prod.keys
         wget https://github.com/DeaconBlood/PROD.KEYS/releases/download/KEYS/prod.keys
