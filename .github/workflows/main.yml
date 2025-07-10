@@ -30,14 +30,15 @@ jobs:
       run: |
         git config --global --add safe.directory `pwd`
         git submodule update --remote 
-        make dist-bin -j $(nproc);
+        wget https://raw.githubusercontent.com/zerofo/nx-ovlloader/refs/heads/forward/hbl.json
+        mv hbl.json config.json
+        make nx -j $(nproc);
         apt install imagemagick tree -y
         #tree .
         mkdir -p hblmenu_NSP/exefs
         mkdir -p hblmenu_NSP/control
-        cp nx-hbmenu.nro hblmenu_NSP/exefs/main
-        wget https://raw.githubusercontent.com/zerofo/nx-ovlloader/refs/heads/forward/hbl.json
-        npdmtool hbl.json hblmenu_NSP/exefs/main.npdm
+        cp nx-hbmenu.elf hblmenu_NSP/exefs/main
+        # npdmtool hbl.json hblmenu_NSP/exefs/main.npdm
         convert icon.jpg -resize 256x256 icon_AmericanEnglish.jpg
         cp icon_AmericanEnglish.jpg hblmenu_NSP/control/
         nacptool --create "hblmenu" "zerofo" "v0.1" hblmenu_NSP/control/control.nacp --titleid 010078787878100D
