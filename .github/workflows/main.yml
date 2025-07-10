@@ -37,8 +37,7 @@ jobs:
         #tree .
         mkdir -p hblmenu_NSP/exefs
         mkdir -p hblmenu_NSP/control
-        cp nx-hbmenu.nro hblmenu_NSP/exefs/main
-        cp nx-hbmenu.npdm hblmenu_NSP/exefs/main.npdm
+        cp build/exefs/* hblmenu_NSP/exefs/
         convert icon.jpg -resize 256x256 icon_AmericanEnglish.jpg
         cp icon_AmericanEnglish.jpg hblmenu_NSP/control/
         cp -r romfs hblmenu_NSP/
